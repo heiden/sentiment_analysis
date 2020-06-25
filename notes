@@ -1,0 +1,31 @@
+response.json() has
+	response
+	response has
+		docs - docs is an array of docs
+			each doc has
+				type_of_material - not useful
+				uri              - not useful
+				document_type    - not useful
+				source           - not useful
+				print_page       - may be useful? lower page number == more relevant
+				print_section    - not useful
+				multimedia       - not useful
+				lead_paragraph   - may be useful
+				byline           - not useful
+				pub_date         - not useful
+				web_url          - not useful
+				news_desk        - could be useful, specifies if the news are national or not
+				_id              - not useful
+				keywords         - is an array of word-elements
+          each word has
+            name  - not useful
+            rank  - integer, may be useful?
+            value - the keyword itself
+            major - Y/N, not useful
+				section_name    - not useful
+				word_count      - integer
+				abstract        - decide if use or not
+				headline        - calculate sentiment of the news with this sentence
+          print_headline - I think I'm gonna use this
+          main           - 
+				snippet         - looks like it's the same as the abstract
