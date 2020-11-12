@@ -15,12 +15,12 @@ class Spider
   end
 
   def run
-    years = [2020]
-    months = [1]
+    years = [2017, 2018]
+    months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     years.each do |year|
       months.each do |month|
-        # crawl(year, month)
+        crawl(year, month)
         process(year, month)
       end
     end
