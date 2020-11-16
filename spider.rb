@@ -15,8 +15,8 @@ class Spider
   end
 
   def run
-    years = [2017, 2018]
-    months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    years = (1970..2020).to_a
+  	months = (1..12).to_a
 
     years.each do |year|
       months.each do |month|
@@ -53,7 +53,18 @@ class Spider
       File.write("processed_data/#{year}/#{month}/#{i}.json", JSON.pretty_generate(data))
     end
   end
+
+  def count_news
+  	path = './processed_data'
+  	years = (1970..2020).to_a
+  	months = (1..12).to_a
+
+  	years.each_with_object({}) do |year, buffer|
+  		buffer[year] = months.map { |month| Dir.glob("#{path}/#{year}/#{month}/*").count }
+  	end
+  end
 end
 
 spider = Spider.new
-spider.run
+# spider.run
+puts spider.count_news

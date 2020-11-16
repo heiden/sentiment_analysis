@@ -37,8 +37,8 @@ def list_files(paths):
   return files
 
 def read_data():
-  years = [2017, 2018, 2019, 2020]
-  months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  years = [x for x in range(1970, 2020+1)]
+  months = [x for x in range(1, 12+1)]
 
   paths = ["processed_data/{}/{}/".format(year, month) for year in years for month in months]
   files = list_files(paths)
@@ -48,7 +48,8 @@ def read_data():
     with open(file, 'r') as f:
       data = f.read()
       parsed_data = json.loads(data)
-      abstracts.append(parsed_data['abstract'])
+      if parsed_data['abstract'] != None:
+        abstracts.append(parsed_data['abstract'])
 
   return abstracts
   # corpus_of_text = ""
@@ -66,7 +67,7 @@ def run():
   # words = [nltk.word_tokenize(sentence) for sentence in sentences]
 
   text = read_data()
-  text = [sentence for sentence in text if sentence != None] # remove NoneType - maybe some files are empty?
+  # text = [sentence for sentence in text if sentence != None] # remove NoneType - maybe some files are empty?
   text = [sentence.lower() for sentence in text]
   text = [re.sub('[^a-zA-Z]', ' ', sentence) for sentence in text]
   text = [re.sub(r'\s+', ' ', sentence) for sentence in text]
