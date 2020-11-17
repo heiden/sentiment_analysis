@@ -16,7 +16,7 @@ class Spider
 
   def run
     years = (1970..2020).to_a
-  	months = (1..12).to_a
+    months = (1..12).to_a
 
     years.each do |year|
       months.each do |month|
@@ -55,13 +55,13 @@ class Spider
   end
 
   def count_news
-  	path = './processed_data'
-  	years = (1970..2020).to_a
-  	months = (1..12).to_a
+    path = './processed_data'
+    years = (1970..2020).to_a
+    months = (1..12).to_a
 
-  	years.each_with_object({}) do |year, buffer|
-  		buffer[year] = months.map { |month| Dir.glob("#{path}/#{year}/#{month}/*").count }
-  	end
+    years.each_with_object({}) do |year, buffer|
+      buffer[year] = months.map { |month| Dir.glob("#{path}/#{year}/#{month}/*").count }
+    end
   end
 end
 
