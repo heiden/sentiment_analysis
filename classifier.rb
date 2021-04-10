@@ -40,8 +40,26 @@ class Classifier
       puts "Finished classifying news from month #{month}"
     end
   end
+
+  def count_news_by_company(stock)
+    months.each do |month|
+      count = 0
+      news_count = %x(ls "./processed_data/#{year}/#{month}" | wc -l).to_i
+      
+      for i in 0..news_count-1
+        abstract = JSON.parse(File.read("./processed_data/#{year}/#{month}/#{i}.json"))['abstract']
+        abstract.downcase!
+        abstract.gsub!(/[^A-Za-z]/, ' ')
+        abstract.gsub!(/\s+/, ' ')
+
+        count += 1 if abstract.include?(stock)
+      end
+
+      puts "Month #{month} - #{stock}: #{count}"
+    end
+  end
 end
 
 year = 2019
 classifier = Classifier.new(year)
-classifier.run
+classifier.count_news_by_company('nvidia')

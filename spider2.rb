@@ -20,14 +20,14 @@ class Spider
 
   def extract_page
     log = File.readlines("./data_from_queries/control.csv")
-    log.map! { |line| line.chomp }
+    log.map!(&:chomp)
 
     pairs = log.each_with_object({}) do |pair, acc| 
       k, v = pair.split(';')
       acc[k] = v
     end
 
-    pairs[stock]
+    pairs[stock].to_i
   end
 
   def crawl(page = 0)
@@ -73,7 +73,7 @@ class Spider
       # puts response['docs'].map { |doc| doc['headline']['main'] }
       documents.each do |doc|
         date = Date.parse(doc['pub_date'])
-        file.write("#{doc['headline']['main']};#{date.month}\n")
+        file.write("#{doc['headline']['main']};#{date.month};#{date.day}\n")
       end
 
       sleep(15) if page % 10 == 0 # I think my requests are being blocked at some point... :thinking:
@@ -82,6 +82,14 @@ class Spider
   end
 end
 
-spider = Spider.new('tesla', 2020)
-starting_page = spider.extract_page
-spider.crawl(starting_page)
+year = 2020
+stocks = File.readlines("./data_from_queries/stocks")
+stocks.map!(&:chomp)
+stocks = stocks # test
+
+stocks.each do |stock|
+  spider = Spider.new(stock, year)
+  starting_page = spider.extract_page || 0
+  spider.crawl(starting_page)
+  sleep(60)
+end
