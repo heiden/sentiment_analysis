@@ -2,6 +2,20 @@ require 'json'
 require 'fileutils'
 require 'httparty'
 
+# maps a stock string name to the corresponding ticker
+TICKERS = {
+  'apple' => 'AAPL',
+  'microsoft' => 'MSFT',
+  'amazon' => 'AMZN',
+  'google' => 'GOOG',
+  'facebook' => 'FB',
+  'berkshire hathaway' => 'BRK-B',
+  'visa' => 'V',
+  'walmart' => 'WMT',
+  'johnson & johnson' => 'JNJ',
+  'procter & gamble' => 'PG'
+}
+
 class Spider
   attr_accessor :key, :stock, :year
 
@@ -31,7 +45,9 @@ class Spider
   end
 
   def crawl(page = 0)
-    file = File.open("./data_from_queries/#{year}/#{stock}.csv", 'a')
+    file = File.open("./data_from_queries/#{year}/#{TICKERS[stock]}.csv", 'a')
+
+    file.write('Headline;Month;Day') if page == 0 # csv header
 
     while true do
       success = false
@@ -58,7 +74,7 @@ class Spider
       #   response = HTTParty.get(url)
       # end
 
-      puts "page #{page}: code #{response.code}"
+      puts "#{stock}, page #{page}: code #{response.code}"
 
       if response.code != 200 || page == 50
         control = File.open('./data_from_queries/control.csv', 'a')
@@ -73,7 +89,7 @@ class Spider
       # puts response['docs'].map { |doc| doc['headline']['main'] }
       documents.each do |doc|
         date = Date.parse(doc['pub_date'])
-        file.write("#{doc['headline']['main']};#{date.month};#{date.day}\n")
+        file.write("#{doc['headline']['main'].gsub(';', ',')};#{date.month};#{date.day}\n")
       end
 
       sleep(15) if page % 10 == 0 # I think my requests are being blocked at some point... :thinking:
@@ -82,10 +98,9 @@ class Spider
   end
 end
 
-year = 2020
+year = 2019
 stocks = File.readlines("./data_from_queries/stocks")
 stocks.map!(&:chomp)
-stocks = stocks # test
 
 stocks.each do |stock|
   spider = Spider.new(stock, year)
