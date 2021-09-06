@@ -47,7 +47,7 @@ class Spider
   def crawl(page = 0)
     file = File.open("./data_from_queries/#{year}/#{TICKERS[stock]}.csv", 'a')
 
-    file.write('Headline;Month;Day') if page == 0 # csv header
+    file.write("Headline;Month;Day\n") if page == 0 # csv header
 
     while true do
       success = false
@@ -98,7 +98,7 @@ class Spider
   end
 end
 
-year = 2019
+year = 2016
 stocks = File.readlines("./data_from_queries/stocks")
 stocks.map!(&:chomp)
 
