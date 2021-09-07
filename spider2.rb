@@ -2,18 +2,60 @@ require 'json'
 require 'fileutils'
 require 'httparty'
 
+# S&P top 50, index weights as of September 3rd, 2021
 # maps a stock string name to the corresponding ticker
 TICKERS = {
   'apple' => 'AAPL',
   'microsoft' => 'MSFT',
   'amazon' => 'AMZN',
-  'google' => 'GOOG',
   'facebook' => 'FB',
-  'berkshire hathaway' => 'BRK-B',
-  'visa' => 'V',
-  'walmart' => 'WMT',
+  'google1' => 'GOOGL',
+  'googl2' => 'GOOG',
+  'nvidia' => 'NVDA',
+  'tesla' => 'TSLA',
+  'berkshire hathaway' => 'BHK-B',
+  'jpmorgan chase' => 'JPM',
   'johnson & johnson' => 'JNJ',
-  'procter & gamble' => 'PG'
+  'unitedhealth' => 'UNH',
+  'visa' => 'V',
+  'procter & gamble' => 'PG',
+  'home depot' => 'HD',
+  'paypal' => 'PYPL',
+  'disney' => 'DIS',
+  'adobe' => 'ADBE',
+  'bank of america' => 'BAC',
+  'mastercard' => 'MA',
+  'comcast' => 'CMCSA',
+  'pfizer' => 'PFE',
+  'netflix' => 'NFLX',
+  'salesforce' => 'CRM',
+  'cisco' => 'CSCO',
+  'exxon mobil' => 'XOM',
+  'verizon' => 'VZ',
+  'abbott laboratories' => 'ABT',
+  'thermo fisher scientific' => 'TMO',
+  'coca-cola' => 'KO',
+  'accenture' => 'ACN',
+  'pepsico' => 'PEP',
+  'intel' => 'INTC',
+  'danaher' => 'DHR',
+  'nike' => 'NKE',
+  'eli lilly' => 'LLY',
+  'walmart' => 'WMT',
+  'costco' => 'COST',
+  'broadcom' => 'AVGO',
+  'abbvie' => 'ABBV',
+  'at&t' => 'T',
+  'merck & co' => 'MRK',
+  'chevron' => 'CVX',
+  'wells fargo' => 'WFC',
+  'medtronic' => 'MDT',
+  'mcdonalds' => 'MCD',
+  'texas instruments' => 'TXN',
+  'nextera energy' => 'NEE',
+  'philip morris' => 'PM',
+  'oracle' => 'ORCL'
+
 }
 
 class Spider

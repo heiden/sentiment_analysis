@@ -1,50 +1,50 @@
-apple
-microsoft
-amazon
-google
-facebook
-berkshire hathaway
-visa
-walmart
-johnson & johnson
-procter & gamble
-nvidia
-mastercard
-jpmorgan
-unitedhealth
-home depot
-verizon
-paypal
-adobe
-disney
-salesforce
-coca-cola
-bank of america
-netflix
-pfizer
-comcast
-intel
-nike
-merck
-at&t
-pepsi
-abbott
-thermo fisher
-oracle
-mcdonald's
-costco
-danaher
-cisco
-accenture
-broadcom
-medtronic
-abbvie
-united parcel service
-nextera
-qualcomm
-exxon
-chevron
-t-mobile
-texas instruments
-lowe
-union pacific
+1    Apple Inc.                        AAPL 
+2    Microsoft Corporation             MSFT 
+3    Amazon.com Inc.                   AMZN 
+4    Facebook Inc. Class A             FB 
+5    Alphabet Inc. Class A             GOOGL *will use same keyword google
+6    Alphabet Inc. Class C             GOOG  *will use same keyword google
+7    NVIDIA Corporation                NVDA 
+8    Tesla Inc                         TSLA 
+9    Berkshire Hathaway Inc. Class B   BRK-B
+10   JPMorgan Chase & Co.              JPM
+11   Johnson & Johnson                 JNJ
+12   UnitedHealth Group Incorporated   UNH
+13   Visa Inc. Class A                 V
+14   Procter & Gamble Company          PG 
+15   Home Depot Inc.                   HD 
+16   PayPal Holdings Inc               PYPL 
+17   Walt Disney Company               DIS
+18   Adobe Inc.                        ADBE 
+19   Bank of America Corp              BAC
+20   Mastercard Incorporated Class A   MA 
+21   Comcast Corporation Class A       CMCSA
+22   Pfizer Inc.                       PFE
+23   Netflix Inc.                      NFLX 
+24   salesforce.com inc.               CRM
+25   Cisco Systems Inc.                CSCO 
+26   Exxon Mobil Corporation           XOM
+27   Verizon Communications Inc.       VZ 
+28   Abbott Laboratories               ABT
+29   Thermo Fisher Scientific Inc.     TMO
+30   Coca-Cola Company                 KO 
+31   Accenture Plc Class A             ACN
+32   PepsiCo Inc.                      PEP
+33   Intel Corporation                 INTC 
+34   Danaher Corporation               DHR
+35   NIKE Inc. Class B                 NKE
+36   Eli Lilly and Company             LLY
+37   Walmart Inc.                      WMT
+38   Costco Wholesale Corporation      COST 
+39   Broadcom Inc.                     AVGO 
+40   AbbVie Inc.                       ABBV 
+41   AT&T Inc.                         T
+42   Merck & Co. Inc.                  MRK
+43   Chevron Corporation               CVX
+44   Wells Fargo & Company             WFC
+45   Medtronic Plc                     MDT
+46   McDonald's Corporation            MCD
+47   Texas Instruments Incorporated    TXN
+48   NextEra Energy Inc.               NEE
+49   Philip Morris International Inc.  PM 
+50   Oracle Corporation                ORCL
