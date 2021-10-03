@@ -140,7 +140,7 @@ class Spider
   end
 end
 
-year = 2016
+year = 2018
 stocks = File.readlines("./data_from_queries/stocks")
 stocks.map!(&:chomp)
 
