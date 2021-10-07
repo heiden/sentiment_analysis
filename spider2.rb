@@ -9,11 +9,10 @@ TICKERS = {
   'microsoft' => 'MSFT',
   'amazon' => 'AMZN',
   'facebook' => 'FB',
-  'google1' => 'GOOGL',
-  'googl2' => 'GOOG',
+  'google' => 'GOOG',
   'nvidia' => 'NVDA',
   'tesla' => 'TSLA',
-  'berkshire hathaway' => 'BHK-B',
+  'berkshire hathaway' => 'BRK-B',
   'jpmorgan chase' => 'JPM',
   'johnson & johnson' => 'JNJ',
   'unitedhealth' => 'UNH',
@@ -55,7 +54,6 @@ TICKERS = {
   'nextera energy' => 'NEE',
   'philip morris' => 'PM',
   'oracle' => 'ORCL'
-
 }
 
 class Spider
@@ -140,13 +138,15 @@ class Spider
   end
 end
 
-year = 2018
+year = 2020
 stocks = File.readlines("./data_from_queries/stocks")
 stocks.map!(&:chomp)
 
 stocks.each do |stock|
   spider = Spider.new(stock, year)
   starting_page = spider.extract_page || 0
+  next if starting_page == 49
+
   spider.crawl(starting_page)
   sleep(60)
 end
